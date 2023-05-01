@@ -1,0 +1,63 @@
+{% extends 'index.html' %}
+{% block body %}
+        <h1 class="text-center text-info m-4">Movies photo store </h1>
+    <div class="container">
+    <div class="container w-50 mt-2 mb-5">
+        <div class="mb-3 bt-3">
+            <form class="d-flex" action="/search" method="post" role="search">
+            <input type="text" class="form-control" name="movie_name" placeholder="Search for movie from your DB" aria-label="Recipient's username with two button addons">
+            <button class="btn btn-outline-primary" type="submit">Search</button>
+            </form>
+           <form class="d-flex" action="/add_img" method="post" role="search">
+            <input type="text" class="form-control" name="movie" placeholder="Movie name" aria-label="Recipient's username with two button addons">
+            <button class="btn btn-outline-primary" type="submit">Add movie</button>
+           </form>
+            <form class="d-flex" action="/delete_img" method="post" role="search">
+            <input type="text" class="form-control" name="movie" placeholder="Movie name" aria-label="Recipient's username with two button addons">
+            <button class="btn btn-outline-primary" type="submit">Delete movie</button>
+           </form>
+
+            <div class="form">
+             <form action="/update" method="post">
+                <div id="input-1">
+                <div class="input-group">
+                <input type="text" name="old_value" placeholder="Movie name" class="form-control">
+                <input type="text" name="new_value" placeholder="Update Movie name" class="form-control">
+                <button class="btn btn-outline-primary" type="submit">Update movie</button>
+                </div>
+                </div>
+             </form>
+        </div>
+        </div>
+    </div>
+    <style>
+      .image {
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+        margin: 10px;
+      }
+    </style>
+<h4 class="text-info">Movie images in your DB </h4>
+<div class="card-deck">
+  {% for image in image_data %}
+    <div class="card">
+      <img src="data:image/png;base64,{{ image }}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <a href="#" class="btn btn-outline-primary">Delete</a>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<style>
+ .card {
+    width: 30%;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+</style>
+    </div>
+    {% endblock%}

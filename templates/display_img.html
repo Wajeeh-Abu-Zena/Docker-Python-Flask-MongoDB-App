@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+{%block body%}
+
+    <style>
+      .image {
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+        margin: 10px;
+      }
+    </style>
+<h4 class="text-info">Movie images in your DB </h4>
+    <img src="data:image/png;base64,{{ image }}" class="image" alt="Image">
+{% endblock%}

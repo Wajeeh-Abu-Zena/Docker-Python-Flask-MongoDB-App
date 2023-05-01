@@ -1,0 +1,23 @@
+version: '3'
+services:
+  app:
+    build: .
+    image: my_app
+    restart: always
+    command: python -u app.py
+    ports:
+      - '5000:5000'
+    environment:
+      - MONGO_URI=mongodb://localhost:27017/mon_img.fs.files
+    links:
+      - db
+
+  db:
+    image: mongo:latest
+    volumes:
+      - data:/data/db
+    ports:
+      - "27017:27017"
+
+volumes:
+  data:
